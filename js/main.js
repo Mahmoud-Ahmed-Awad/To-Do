@@ -69,3 +69,12 @@ addBtn.addEventListener("click", () => {
   showTask(task.id, task.name);
   taskInp.value = "";
 });
+
+if (
+  window.matchMedia &&
+  window.matchMedia("(prefers-color-scheme: dark)").matches
+) {
+  document.body.dataset.bsTheme = "dark";
+} else {
+  document.body.dataset.bsTheme = "light";
+}
