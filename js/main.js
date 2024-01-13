@@ -70,55 +70,38 @@ addBtn.addEventListener("click", () => {
   taskInp.value = "";
 });
 
-let sun = document.querySelector(".sun");
-let moon = document.querySelector(".moon");
-let button = document.querySelector(".theme-mod");
+let sun = document.querySelector(".sun")
+let moon = document.querySelector(".moon")
+let button = document.querySelector(".theme-mod")
 
 button.addEventListener("click", () => {
-  sun.classList.toggle("visible");
-  moon.classList.toggle("visible");
-  if (window.localStorage.getItem("theme") == "dark") {
+  sun.classList.toggle("visible")
+  moon.classList.toggle("visible")
+  if (document.body.dataset.bsTheme == "dark") {
     window.localStorage.setItem("theme", "light");
-    document.body.dataset.bsTheme = "light";
+    document.body.dataset.bsTheme = "light"
   } else {
     window.localStorage.setItem("theme", "dark");
-    document.body.dataset.bsTheme = "dark";
+    document.body.dataset.bsTheme = "dark"
   }
-  changeToggleColor();
-});
+})
 
-if (window.localStorage.getItem("theme")) {
+if (window.localStorage.getItem("theme")){
   document.body.dataset.bsTheme = window.localStorage.getItem("theme");
   if (window.localStorage.getItem("theme") == "dark") {
-    moon.classList.add("visible");
+    moon.classList.add("visible")
   } else {
-    sun.classList.add("visible");
-    changeToggleColor();
+    sun.classList.add("visible")
   }
 } else {
   if (
-    window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-  ) {
-    document.body.dataset.bsTheme = "dark";
-    moon.classList.add("visible");
-  } else {
-    document.body.dataset.bsTheme = "light";
-    sun.classList.add("visible");
-    changeToggleColor();
-  }
+  window.matchMedia &&
+  window.matchMedia("(prefers-color-scheme: dark)").matches
+) {
+  document.body.dataset.bsTheme = "dark";
+  moon.classList.add("visible")
+} else {
+  document.body.dataset.bsTheme = "light";
+  sun.classList.add("visible")
 }
-
-function changeToggleColor() {
-  if (
-    document.documentElement.style.getPropertyValue("--theme-mod-color") ==
-    "#f0f0f0"
-  ) {
-    document.documentElement.style.setProperty("--theme-mod-color", "#000");
-  } else {
-    document.documentElement.style.setProperty("--theme-mod-color", "#f0f0f0");
-  }
-  console.log(
-    document.documentElement.style.getPropertyValue("--theme-mod-color")
-  );
 }
